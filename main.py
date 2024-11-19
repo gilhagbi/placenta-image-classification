@@ -3,7 +3,7 @@ from PIL import Image
 from pathlib import Path
 from io import BytesIO
 import tempfile
-from inference import classify_and_aggregate  # Import your function from inference.py
+import inference  # Import your function from inference.py
 
 # Main app setup
 st.set_page_config(page_title="Medical Images Classification", layout="wide")
@@ -44,7 +44,7 @@ if uploaded_images:
         with st.spinner('Processing your image...'):
             try:
                 # Perform classification and aggregation
-                detailed_predictions, final_prediction, avg_probs = classify_and_aggregate(tmp_image_path, save_path)
+                detailed_predictions, final_prediction, avg_probs = inference.classify_and_aggregate(tmp_image_path, save_path)
 
                 # Display the result
                 st.write(f"### Final Prediction: **{final_prediction}**")
