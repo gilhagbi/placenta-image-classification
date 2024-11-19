@@ -1,7 +1,5 @@
 import streamlit as st
-from PIL import Image
 from pathlib import Path
-from io import BytesIO
 import tempfile
 import inference  # Import your function from inference.py
 
