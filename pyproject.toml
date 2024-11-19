@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "placenta-week-classification-model"
+version = "0.1.0"
+description = ""
+authors = ["gilihagbi <hagbi.gili@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+streamlit = "^1.40.1"
+fastai = "^2.7.18"
+seaborn = "^0.13.2"
+gdown = "^5.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
