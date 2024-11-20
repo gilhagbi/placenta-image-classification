@@ -2,7 +2,7 @@ import streamlit as st
 from pathlib import Path
 import tempfile
 import inference  # Import your function from inference.py
-
+from fastai.vision.all import *
 # Main app setup
 st.set_page_config(page_title="Medical Images Classification", layout="wide")
 
@@ -37,12 +37,12 @@ if uploaded_images:
 
         # Specify save path for cropped tiles
         save_path = Path("Image_to_predict")  # Change this to your desired directory
-
+        learn_inf = load_learner("placenta_classification_export.pkl", pickle_module=pickle)
         # Show loading spinner during the classification process
         with st.spinner('Processing your image...'):
             try:
                 # Perform classification and aggregation
-                detailed_predictions, final_prediction, avg_probs = inference.classify_and_aggregate(tmp_image_path, save_path)
+                detailed_predictions, final_prediction, avg_probs = inference.classify_and_aggregate(learn_inf,tmp_image_path, save_path)
 
                 # Display the result
                 st.write(f"### Final Prediction: **{final_prediction}**")

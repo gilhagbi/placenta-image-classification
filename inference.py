@@ -4,7 +4,7 @@ import torch
 from PIL import Image
 import config
 import cloudpickle
-learn_inf = load_learner("placenta_classification_export.pkl", pickle_module=pickle)
+
 # Load the trained model
 #learn_inf = load_learner(str("training/placenta_classification_export.pkl"))
 
@@ -28,7 +28,7 @@ def crop_with_overlap(image_path, save_path, tile_size=(512, 512), stride=(256, 
 
 
 # Classify tiles and aggregate predictions
-def classify_and_aggregate(image_path, save_path, tile_size=(512, 512), stride=(256, 256)):
+def classify_and_aggregate(learn_inf, image_path, save_path, tile_size=(512, 512), stride=(256, 256)):
     tiles = crop_with_overlap(image_path, save_path, tile_size, stride)
     predictions = [(tile.name, learn_inf.predict(PILImage.create(tile))) for tile in tiles]  # Unpacking two values
 
