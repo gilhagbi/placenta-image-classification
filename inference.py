@@ -4,7 +4,7 @@ import torch
 from PIL import Image
 import config
 # Load the trained model
-learn_inf = load_learner("training/placenta_classification_export.pkl")
+learn_inf = load_learner(str("training/placenta_classification_export.pkl"))
 
 
 # Crop function with overlap
