@@ -26,7 +26,10 @@ if uploaded_images:
         try:
             tmp_file.write(uploaded_image.read())
             tmp_file.close()
-            tmp_image_path = str(os.path.basename(tmp_file))
+            tmp_image_path = str(tmp_file.name)
+            #tmp_image_path=os.path.dirname(tmp_file)
+            #tmp_image_path = str(os.path.basename(tmp_file))
+
 
             # Specify save path for cropped tiles
             save_path = "Image_to_predict"  # Use string paths
@@ -50,12 +53,12 @@ if uploaded_images:
 
         except Exception as e:
             st.error(f"Failed to process uploaded image: {e}")
-        finally:
-            # Clean up temporary file after processing
-            try:
-                os.remove(tmp_image_path)
-            except Exception as e:
-                st.warning(f"Failed to delete temporary file: {e}")
+        # finally:
+        #     # Clean up temporary file after processing
+        #     try:
+        #         os.remove(tmp_image_path)
+        #     except Exception as e:
+        #         st.warning(f"Failed to delete temporary file: {e}")
 
 # else:
     # st.write("Please upload images to analyze.")
