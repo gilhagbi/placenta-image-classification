@@ -28,7 +28,7 @@ def crop_with_overlap(image_path, save_path, tile_size=(512, 512), stride=(256, 
     save_path = str(save_path)  # Convert save_path to a Path object
     save_path.mkdir(parents=True, exist_ok=True)
 
-    image_path = PosixPath(image_path)  # Convert image_path to a Path object
+    image_path = str(image_path)  # Convert image_path to a Path object
     for i in range(0, img.width - tile_size[0] + 1, stride[0]):
         for j in range(0, img.height - tile_size[1] + 1, stride[1]):
             tile = img.crop((i, j, i + tile_size[0], j + tile_size[1]))
