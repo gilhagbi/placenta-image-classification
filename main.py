@@ -6,21 +6,21 @@ from fastai.vision.all import *
 # Main app setup
 st.set_page_config(page_title="Medical Images Classification", layout="wide")
 
-# Background Image and Styling (Optional)
-# css = """
-# <style>
-#     .stApp {
-#         background-image: url('background_image_url');
-#         background-size: cover;
-#         background-position: center;
-#     }
-# </style>
-# """
-# st.markdown(css, unsafe_allow_html=True)
+#Background Image and Styling (Optional)
+css = """
+<style>
+    .stApp {
+        background-image: url('background_image_url');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+"""
+st.markdown(css, unsafe_allow_html=True)
 
 # Title of the app
 st.title("Medical Images Classification")
-st.image("robot_image.png", caption="AI Analyzing Medical Images", use_container_width=False, width=600)
+#st.image("robot_image.png", caption="AI Analyzing Medical Images", use_container_width=False, width=600)
 
 # File uploader container
 st.subheader("Upload Medical Images for Classification")
