@@ -4,7 +4,7 @@ import torch
 from PIL import Image
 import config
 import cloudpickle
-learn_inf = load_learner("training/placenta_classification_export.pkl", pickle_module=cloudpickle)
+learn_inf = load_learner("training/placenta_classification_export.pkl", pickle_module=pickle)
 # Load the trained model
 #learn_inf = load_learner(str("training/placenta_classification_export.pkl"))
 
