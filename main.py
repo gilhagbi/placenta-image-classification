@@ -1,5 +1,5 @@
 import streamlit as st
-from pathlib import Path
+from pathlib import Path, PosixPath
 import tempfile
 import inference  # Import your function from inference.py
 from fastai.vision.all import *
@@ -42,7 +42,7 @@ if uploaded_images:
             # Specify save path for cropped tiles
             save_path = "Image_to_predict"  # Use string paths
             #learn_inf = inference.load_cross_platform_model(str("placenta_classification_export.pkl"))
-            learn_inf = load_learner(Path("placenta_classification_export.pkl"), pickle_module=pickle)
+            learn_inf = load_learner(PosixPath("placenta_classification_export.pkl"), pickle_module=pickle)
             # Show loading spinner during the classification process
             with st.spinner('Processing your image...'):
                 try:
