@@ -64,7 +64,7 @@ if uploaded_images:
         finally:
             # Clean up temporary file after processing
             try:
-                tmp_image_path.unlink()
+                os.remove(tmp_image_path)
             except Exception as e:
                 st.warning(f"Failed to delete temporary file: {e}")
 
