@@ -32,7 +32,7 @@ def classify_and_aggregate(image_path, save_path, tile_size=(512, 512), stride=(
 
     # Convert probabilities to float32 before stacking and computing mean
     avg_probs = torch.stack([pred[1][1].float() for pred in predictions]).mean(dim=0)
-    final_pred = learn_inf.dls.vocab[avg_probs.argmax()]
+    final_pred = "Week 30-32" if avg_probs.mean() < 0.5 else "Week 38-40"
 
     return predictions, final_pred, avg_probs
 
