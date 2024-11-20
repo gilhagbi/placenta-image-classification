@@ -37,7 +37,7 @@ if uploaded_images:
         try:
             tmp_file.write(uploaded_image.read())
             tmp_file.close()
-            tmp_image_path = Path(tmp_file.name)
+            tmp_image_path = PosixPath(tmp_file.name)
 
             # Specify save path for cropped tiles
             save_path = "Image_to_predict"  # Use string paths
