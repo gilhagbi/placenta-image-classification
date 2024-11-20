@@ -46,19 +46,19 @@ if uploaded_images:
                     # Display the result
                     st.write(f"### Final Prediction: **{final_prediction}**")
                     st.subheader(f"Original Image: {uploaded_image.name}")
-                    st.image(str(tmp_image_path), caption=f"Aggregate Prediction: {final_prediction}", use_container_width=True)
+                    st.image(tmp_image_path, caption=f"Aggregate Prediction: {final_prediction}", use_container_width=True)
 
                 except Exception as e:
                     st.error(f"An error occurred during classification: {e}")
 
         except Exception as e:
             st.error(f"Failed to process uploaded image: {e}")
-        # finally:
-        #     # Clean up temporary file after processing
-        #     try:
-        #         os.remove(tmp_image_path)
-        #     except Exception as e:
-        #         st.warning(f"Failed to delete temporary file: {e}")
+        finally:
+            # Clean up temporary file after processing
+            try:
+                os.remove(tmp_image_path)
+            except Exception as e:
+                st.warning(f"Failed to delete temporary file: {e}")
 
 # else:
     # st.write("Please upload images to analyze.")
