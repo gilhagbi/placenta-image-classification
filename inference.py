@@ -25,7 +25,7 @@ def load_cross_platform_model(model_path):
 def crop_with_overlap(image_path, save_path, tile_size=(512, 512), stride=(256, 256)):
     img = Image.open(image_path)
     tiles = []
-    save_path = PosixPath(save_path)  # Convert save_path to a Path object
+    save_path = str(save_path)  # Convert save_path to a Path object
     save_path.mkdir(parents=True, exist_ok=True)
 
     image_path = PosixPath(image_path)  # Convert image_path to a Path object

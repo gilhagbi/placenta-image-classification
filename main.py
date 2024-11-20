@@ -37,12 +37,12 @@ if uploaded_images:
         try:
             tmp_file.write(uploaded_image.read())
             tmp_file.close()
-            tmp_image_path = PosixPath(tmp_file.name)
+            tmp_image_path = str(tmp_file.name)
 
             # Specify save path for cropped tiles
             save_path = "Image_to_predict"  # Use string paths
             #learn_inf = inference.load_cross_platform_model(str("placenta_classification_export.pkl"))
-            learn_inf = load_learner(PosixPath("placenta_classification_export.pkl"), pickle_module=pickle)
+            learn_inf = load_learner(str("placenta_classification_export.pkl"), pickle_module=pickle)
             # Show loading spinner during the classification process
             with st.spinner('Processing your image...'):
                 try:
