@@ -20,7 +20,8 @@ st.markdown(css, unsafe_allow_html=True)
 
 # Title of the app
 st.title("Medical Images Classification")
-st.image("robot_image.png", caption="AI Analyzing Medical Images", use_container_width=False, width=300)
+st.image("./robot_image.png", caption="AI Analyzing Medical Images", use_container_width=False, width=300)
+
 
 # File uploader container
 st.subheader("Upload Medical Images for Classification")
