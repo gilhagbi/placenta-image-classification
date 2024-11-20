@@ -26,7 +26,7 @@ if uploaded_images:
         try:
             tmp_file.write(uploaded_image.read())
             tmp_file.close()
-            tmp_image_path = str(tmp_file.name)
+            tmp_image_path = str(os.path.basename(tmp_file))
 
             # Specify save path for cropped tiles
             save_path = "Image_to_predict"  # Use string paths
