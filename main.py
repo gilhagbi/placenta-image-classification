@@ -23,7 +23,7 @@ st.title("Medical Images Classification")
 # Get the absolute path to the image
 image_path = os.path.join(os.getcwd(), "robot_image.png")
 
-st.image("robot_image.png", caption="AI Analyzing Medical Images", width=900)
+st.image("robot_image.png", caption="AI Analyzing Medical Images", width=400)
 # File uploader container
 st.subheader("Upload Medical Images for Classification")
 uploaded_images = st.file_uploader("Upload images", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
