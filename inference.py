@@ -1,5 +1,4 @@
 from fastai.vision.all import *
-from pathlib import Path
 import torch
 from PIL import Image
 import config
@@ -8,18 +7,8 @@ import cloudpickle
 # Load the trained model
 #learn_inf = load_learner(str("training/placenta_classification_export.pkl"))
 import pickle
-from pathlib import PosixPath
 
-class CrossPlatformUnpickler(pickle.Unpickler):
-    def find_class(self, module, name):
-        # Replace WindowsPath with PosixPath
-        if module == "pathlib" and name == "WindowsPath":
-            return PosixPath
-        return super().find_class(module, name)
 
-def load_cross_platform_model(model_path):
-    with open(model_path, "rb") as f:
-        return CrossPlatformUnpickler(f).load()
 
 # Crop function with overlap
 def crop_with_overlap(image_path, save_path, tile_size=(512, 512), stride=(256, 256)):
