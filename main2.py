@@ -26,8 +26,8 @@ if uploaded_images:
             image = Image.open(uploaded_image)
 
             # Load the trained model
-            #learn_inf = load_learner(str("placenta_classification_export.pkl"), pickle_module=pickle)
-            learn_inf = Learner.load('placenta_classification_model')
+            learn_inf = load_learner(str("placenta_classification_export.pkl"), pickle_module=pickle)
+            #learn_inf = Learner.load('placenta_classification_model.pth')
 
             # Show loading spinner during the classification process
             with st.spinner('Processing your image...'):
