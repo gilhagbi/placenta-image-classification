@@ -3,7 +3,13 @@ from PIL import Image
 import inference  # Import your function from inference.py
 from fastai.vision.all import *
 import os
+# Preload the model outside the loop
+@st.cache_resource  # Cache the model to optimize loading
+def load_model():
+    model_path = "placenta_classification_export.pkl"
+    return load_learner(model_path, pickle_module=pickle)
 
+learn_inf = load_model()
 # Main app setup
 st.set_page_config(page_title="Medical Images Classification", layout="wide")
 
