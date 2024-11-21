@@ -1,5 +1,4 @@
 import streamlit as st
-import io
 from PIL import Image
 import inference  # Import your function from inference.py
 from fastai.vision.all import *
@@ -10,9 +9,9 @@ st.set_page_config(page_title="Medical Images Classification", layout="wide")
 
 # Title of the app
 st.title("Medical Images Classification")
-# Get the absolute path to the image
-image_path = os.path.join(os.getcwd(), "robot_image.png")
 
+# Display a default image
+image_path = os.path.join(os.getcwd(), "robot_image.png")
 st.image(image_path, caption="AI Analyzing Medical Images", width=400)
 
 # File uploader container
@@ -26,11 +25,8 @@ if uploaded_images:
             # Read image from the uploaded file (in memory)
             image = Image.open(uploaded_image)
 
-            # Specify save path for cropped tiles (can be in memory as well)
-            #save_path = "Image_to_predict"  # Use string paths
-
             # Load the trained model
-            learn_inf = load_learner("placenta_classification_export.pkl", pickle_module=pickle)
+            learn_inf = load_learner(str("placenta_classification_export.pkl"), pickle_module=pickle)
 
             # Show loading spinner during the classification process
             with st.spinner('Processing your image...'):
