@@ -27,7 +27,7 @@ if uploaded_images:
             image = Image.open(uploaded_image)
 
             # Specify save path for cropped tiles (can be in memory as well)
-            save_path = "Image_to_predict"  # Use string paths
+            #save_path = "Image_to_predict"  # Use string paths
 
             # Load the trained model
             learn_inf = load_learner("placenta_classification_export.pkl", pickle_module=pickle)
@@ -37,7 +37,7 @@ if uploaded_images:
                 try:
                     # Perform classification and aggregation
                     detailed_predictions, final_prediction, avg_probs = inference.classify_and_aggregate(
-                        learn_inf, image, save_path
+                        learn_inf, image
                     )
 
                     # Display the result
