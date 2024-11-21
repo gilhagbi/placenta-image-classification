@@ -30,17 +30,17 @@ if uploaded_images:
 
 
             # Load the trained model
-            learn_inf = load_learner(str("placenta_classification_export.pkl"), pickle_module=pickle)
+            # learn_inf = load_learner(str("placenta_classification_export.pkl"), pickle_module=pickle)
             # learn_inf = Learner.load('placenta_classification_model.pth')
-            # learn_inf = load_learner(model_path, pickle_module=pickle)
+            learn_inf = load_learner(model_path, pickle_module=pickle)
 
             # Show loading spinner during the classification process
             with st.spinner('Processing your image...'):
                 try:
                     # Perform classification and aggregation
-                    detailed_predictions, final_prediction, avg_probs = inference.classify_and_aggregate(
-                        learn_inf, image_to_analyze
-                    )
+                    # detailed_predictions, final_prediction, avg_probs = inference.classify_and_aggregate(
+                    #     learn_inf, image_to_analyze
+                    # )
 
                     # Display the result
                     #st.write(f"### Final Prediction: **{final_prediction}**")
