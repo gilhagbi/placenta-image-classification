@@ -24,26 +24,30 @@ if uploaded_images:
         try:
             # Read image from the uploaded file (in memory)
             image = Image.open(uploaded_image)
+            # Specify save path for cropped tiles
+            save_path = "Image_to_predict"  # Use string paths
+            model_path = os.path.join(os.getcwd(), "placenta_classification_export.pkl")
+            learn_inf = load_learner(model_path, pickle_module=pickle)
 
             # Load the trained model
-            learn_inf = load_learner(str("placenta_classification_export.pkl"), pickle_module=pickle)
+            #learn_inf = load_learner(str("placenta_classification_export.pkl"), pickle_module=pickle)
             #learn_inf = Learner.load('placenta_classification_model.pth')
 
-            # Show loading spinner during the classification process
-            with st.spinner('Processing your image...'):
-                try:
-                    # Perform classification and aggregation
-                    detailed_predictions, final_prediction, avg_probs = inference.classify_and_aggregate(
-                        learn_inf, image
-                    )
-
-                    # Display the result
-                    st.write(f"### Final Prediction: **{final_prediction}**")
-                    st.subheader(f"Original Image: {uploaded_image.name}")
-                    st.image(image, caption=f"Aggregate Prediction: {final_prediction}", use_container_width=True)
-
-                except Exception as e:
-                    st.error(f"An error occurred during classification: {e}")
-
-        except Exception as e:
-            st.error(f"Failed to process uploaded image: {e}")
+        #     # Show loading spinner during the classification process
+        #     with st.spinner('Processing your image...'):
+        #         try:
+        #             # Perform classification and aggregation
+        #             detailed_predictions, final_prediction, avg_probs = inference.classify_and_aggregate(
+        #                 learn_inf, image
+        #             )
+        #
+        #             # Display the result
+        #             st.write(f"### Final Prediction: **{final_prediction}**")
+        #             st.subheader(f"Original Image: {uploaded_image.name}")
+        #             st.image(image, caption=f"Aggregate Prediction: {final_prediction}", use_container_width=True)
+        #
+        #         except Exception as e:
+        #             st.error(f"An error occurred during classification: {e}")
+        #
+        # except Exception as e:
+        #     st.error(f"Failed to process uploaded image: {e}")
