@@ -42,23 +42,23 @@ import pickle
 #     return predictions, final_pred, avg_probs
 
 
-def show_image_with_predictions(image_path, detailed_predictions, final_prediction, avg_probs, tiles):
-    img = Image.open(image_path)
-
-    # Plot the original image with its final prediction score
-    fig, ax = plt.subplots(1, len(tiles) + 1, figsize=(20, 5))  # Create subplots for original + tiles
-    ax[0].imshow(img)
-    ax[0].set_title(f"Original: {final_prediction}\nAvg Probs: {avg_probs}")
-    ax[0].axis('off')
-
-    # Plot each cropped tile with its prediction score
-    for idx, (tile_path, (pred, probs, _)) in enumerate(zip(tiles, detailed_predictions)):
-        tile_img = Image.open(tile_path)
-        ax[idx + 1].imshow(tile_img)
-        ax[idx + 1].set_title(f"Tile {idx}: {pred}\nProbs: {probs}")
-        ax[idx + 1].axis('off')
-
-    plt.show()
+# def show_image_with_predictions(image_path, detailed_predictions, final_prediction, avg_probs, tiles):
+#     img = Image.open(image_path)
+#
+#     # Plot the original image with its final prediction score
+#     fig, ax = plt.subplots(1, len(tiles) + 1, figsize=(20, 5))  # Create subplots for original + tiles
+#     ax[0].imshow(img)
+#     ax[0].set_title(f"Original: {final_prediction}\nAvg Probs: {avg_probs}")
+#     ax[0].axis('off')
+#
+#     # Plot each cropped tile with its prediction score
+#     for idx, (tile_path, (pred, probs, _)) in enumerate(zip(tiles, detailed_predictions)):
+#         tile_img = Image.open(tile_path)
+#         ax[idx + 1].imshow(tile_img)
+#         ax[idx + 1].set_title(f"Tile {idx}: {pred}\nProbs: {probs}")
+#         ax[idx + 1].axis('off')
+#
+#     plt.show()
 
 
 
