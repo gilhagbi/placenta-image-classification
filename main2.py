@@ -26,13 +26,13 @@ if uploaded_images:
             image_to_analyze = Image.open(uploaded_image)
             # Specify save path for cropped tiles
             save_path = "Image_to_predict"  # Use string paths
-            model_path = os.path.join(os.getcwd(), "placenta_classification_export.pkl")
+            #model_path = os.path.join(os.getcwd(), "placenta_classification_export.pkl")
 
 
             # Load the trained model
             # learn_inf = load_learner(str("placenta_classification_export.pkl"), pickle_module=pickle)
             # learn_inf = Learner.load('placenta_classification_model.pth')
-            learn_inf = load_learner(model_path, pickle_module=pickle)
+            #learn_inf = load_learner(model_path, pickle_module=pickle)
 
             # Show loading spinner during the classification process
             with st.spinner('Processing your image...'):
