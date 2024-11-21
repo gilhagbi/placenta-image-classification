@@ -39,6 +39,7 @@ def train_model():
     learner.fine_tune(1)
 
     # Export the trained model
+    learner.save('placenta_classification_model')
     learner.export('placenta_classification_export.pkl')
 
 
