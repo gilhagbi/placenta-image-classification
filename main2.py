@@ -2,7 +2,10 @@ import streamlit as st
 from inference import classify_and_aggregate
 from fastai.vision.all import *
 import os
+from pathlib import Path, PosixPath
 
+# Monkey-patch Path to use PosixPath
+Path = PosixPath
 # Main app setup
 st.set_page_config(page_title="Medical Images Classification", layout="wide")
 
