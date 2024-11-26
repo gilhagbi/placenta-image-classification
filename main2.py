@@ -33,7 +33,7 @@ if uploaded_images:
                 learn_inf = pickle.load(f)
 
             print("Model loaded successfully and is platform-independent.")
-
+            st.image(image_to_analyze, caption=f"Uploaded Image: {uploaded_image.name}", width=600)
             # Load the trained model
             #learn_inf = load_learner(str("placenta_classification_export.pkl"), pickle_module=pickle)
             #learn_inf = load_learner(model_path, pickle_module=pickle)
