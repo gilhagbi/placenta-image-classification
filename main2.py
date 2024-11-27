@@ -5,7 +5,7 @@ import os
 from pathlib import Path, PosixPath
 
 # Monkey-patch Path to use PosixPath
-#Path = PosixPath
+Path = PosixPath
 # Main app setup
 st.set_page_config(page_title="Medical Images Classification", layout="wide")
 
