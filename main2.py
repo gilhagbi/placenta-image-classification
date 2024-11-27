@@ -5,7 +5,7 @@ import os
 from pathlib import Path, PosixPath
 
 # Monkey-patch Path to use PosixPath
-Path = PosixPath
+#Path = PosixPath
 # Main app setup
 st.set_page_config(page_title="Medical Images Classification", layout="wide")
 
@@ -29,14 +29,13 @@ if uploaded_images:
             # Specify save path for cropped tiles
             save_path = "Image_to_predict"  # Use string paths
             st.image(image_to_analyze, caption=f"Uploaded Image: {uploaded_image.name}", width=600)
-
             # Load the model from the pickle file
-            model_path = 'model_to_streamlit.pkl'
-
-            with open(model_path, 'rb') as f:
-                learn_inf = pickle.load(f)
-
-            print("Model loaded successfully and is platform-independent.")
+            #model_path = Path('model_to_streamlit.pkl')
+            #
+            # with open(model_path, 'rb') as f:
+            #     learn_inf = pickle.load(f)
+            #
+            # print("Model loaded successfully and is platform-independent.")
 
             # Load the model using load_learner
             # model_path = 'model_to_streamlit.pkl'
@@ -47,7 +46,7 @@ if uploaded_images:
             #     st.error(f"Failed to load model: {e}")
 
             # Load the trained model
-            #learn_inf = load_learner(str("placenta_classification_export.pkl"), pickle_module=pickle)
+            learn_inf = load_learner(Path("placenta_classification_export.pkl"), pickle_module=pickle)
             #learn_inf = load_learner(model_path, pickle_module=pickle)
 
             # Show loading spinner during the classification process
