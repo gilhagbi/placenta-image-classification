@@ -1,4 +1,3 @@
-
 # Import required libraries
 import os
 import shutil
@@ -14,7 +13,6 @@ import gdown
 import config
 
 
-
 def download_and_extract(file_id, zip_path, extract_folder):
     if not os.path.exists(extract_folder):
         gdown.download(f'https://drive.google.com/uc?export=download&id={file_id}', zip_path, quiet=False)
@@ -22,8 +20,6 @@ def download_and_extract(file_id, zip_path, extract_folder):
         print("Files extracted:", os.listdir(extract_folder))
     else:
         print("Files already extracted.")
-
-
 
 
 def crop_with_overlap(image_path, save_path, tile_size=(512, 512), stride=(256, 256)):
@@ -40,7 +36,8 @@ def crop_with_overlap(image_path, save_path, tile_size=(512, 512), stride=(256, 
             tile = img.crop((left, upper, right, lower))
             tile.save(class_save_path / f"{image_path.stem}_tile_{i}_{j}.jpg")
 
-def images_data_process (config):
+
+def images_data_process(config):
     """
     Downloads, extracts, and processes images by cropping them into overlapping tiles.
 
@@ -55,8 +52,8 @@ def images_data_process (config):
     download_and_extract(config.FILE_ID, config.ZIP_FILE_PATH, config.EXTRACT_FOLDER)
 
     # Step 2: Crop Images into Overlapping Tiles
-    IMAGE_PATH = f"{Path(config.EXTRACT_FOLDER)}/Images"
-    image_files = get_image_files(IMAGE_PATH)
+    image_path = f"{Path(config.EXTRACT_FOLDER)}/Images"
+    image_files = get_image_files(image_path)
 
     # Check if the crop folder already exists and contains files
     if config.SAVE_PATH.exists() and any(config.SAVE_PATH.iterdir()):

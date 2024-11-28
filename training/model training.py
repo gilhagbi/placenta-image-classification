@@ -1,13 +1,12 @@
 # Placenta Classification Model
 
-# Import necessary libraries
 import gdown
 from fastai.vision.all import *
 from torchvision.models import resnet18
+import torch
 import torch.nn as nn
 import config
 from ImagesDataPipeline import images_data_process
-
 
 
 def train_model():
@@ -26,12 +25,13 @@ def train_model():
             Rotate(max_deg=20),  # Random rotation
             FlipItem(),  # Random horizontal flip
             RandomResizedCrop(256, min_scale=0.8),  # Random cropped patches
-            Normalize.from_stats(*imagenet_stats)  # Normalize using ImageNet stats
-        ]
-    ).dataloaders(config.SAVE_PATH, bs=32)  # Create DataLoader
+            Normalize.from_stats(*imagenet_stats),  # Normalize using ImageNet stats
+        ],
+    ).dataloaders(str(config.SAVE_PATH), bs=32)
 
     # Initialize the ResNet18 model
-    model = resnet18(pretrained=True)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = resnet18(pretrained=True).to(device)
     model.fc = nn.Linear(model.fc.in_features, dls.c)  # Adjust final layer for classification
 
     # Create a Learner and fine-tune the model
@@ -39,20 +39,17 @@ def train_model():
     learner.fine_tune(1)
 
     # Export the trained model
-    learner.save('placenta_classification_model')
-    learner.export('placenta_classification_export.pkl')
+    learner.export(Path("placenta_classification_export.pkl"), pickle_module=pickle)
 
 
 def main():
     """
     Main execution flow for processing data and training the model.
-    This is the entry point for the script.
     """
     images_data_process(config)
-    train_model()  # Step 2: Train the model
+    train_model()
     print("Model saved as 'placenta_classification_export.pkl'.")
 
-# Ensure the script runs when executed directly
 
 if __name__ == "__main__":
     main()
